@@ -1,0 +1,37 @@
+/*
+*
+*	Given an array of non-negative integers, you are initially positioned at the first index of the array.
+*
+*	Each element in the array represents your maximum jump length at that position.
+*
+*	Determine if you are able to reach the last index.
+*	
+*	Input: [2,3,1,1,4]
+*	Output: true
+*
+*	Input: [3,2,1,0,4]
+*	Output: false
+*
+*
+*/
+
+class Solution {
+public:
+    bool canJump(vector<int>& nums) {
+        
+        int max_rechable_index=0;
+        
+        for(int i=0;i<nums.size()-1;i++){
+            
+             if(i==0 || max_rechable_index>=i)
+                max_rechable_index=max(max_rechable_index,i+nums[i]);
+            else
+                return false;
+        }
+        
+        if(max_rechable_index>=nums.size()-1)
+            return true;
+        
+        return false;
+    }
+};
